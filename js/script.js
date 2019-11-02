@@ -10,14 +10,17 @@ function init() {
   window.addEventListener('DOMContentLoaded', init)
   
   
-//implement a posts to show variable to get only the last X posts?
+// Only display the last X posts in the sheet
+var postsToShow = 100;
 
 // go through each row and generate posts to the page
   function lastPosts(sheet) {
     var postsEl = document.getElementById('posts');
-    // loop through the most recent rows first (ie, bottom up)
-    for (var i = sheet.length - 1; i >= 0; --i) {
-      var row = sheet[i];
+    var lastXRows = sheet.slice(-postsToShow);
+    
+    // loop through the last X rows most recent first (ie, bottom up)
+    for (var i = lastXRows.length - 1; i >= 0; --i) {
+      var row = lastXRows[i];
       var post = generatePost(row);
       postsEl.innerHTML += post;
     }
