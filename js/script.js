@@ -42,24 +42,24 @@ var postsToShow = 5;
     post.setAttribute('id', 'js-post');
 
     var postDate = document.createElement('div');
-    postDate.innerText = row['date-of-announcement'];
+    postDate.textContent = row['date-of-announcement'];
     post.appendChild(postDate);
 
     var postTitle = document.createElement('div');
-    postTitle.innerText = row['title-of-announcement'];
+    postTitle.textContent = row['title-of-announcement'];
     post.appendChild(postTitle);
 
     var postBody = document.createElement('div');
-    postBody.innerText = row['body-of-announcement'];
+    postBody.textContent = row['body-of-announcement'];
     post.appendChild(postBody);
 
     var postProduce = document.createElement('div');
-    postProduce.innerText = row['produce-list'];
+    postProduce.textContent = row['produce-list'];
     post.appendChild(postProduce);
 
     var postLink = document.createElement('a');
     postLink.setAttribute('href', row['link-destination']);
-    postLink.innerText = 'the link';
+    postLink.textContent = 'the link';
     post.appendChild(postLink);
 
     return post;
