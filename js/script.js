@@ -3,7 +3,7 @@ function init() {
       key: 'https://docs.google.com/spreadsheets/d/1lupfqBIWuExmeB1eDWYkeh0RRCV0nusDmnbpFLLcm6A/edit?usp=sharing',
       simpleSheet: true }
     ).then(function(data, tabletop) { 
-      //console.log(data)
+      console.log(data)
       postToPage(data);
     })
   }
@@ -14,6 +14,7 @@ function init() {
 var postsToShow = 5;
 
 // go through each row and generate posts to the page
+// sheet is an array of objects
   function postToPage(sheet) {
     // cut down the sheet to only the last X rows
     var sheetLastX = sheet.slice(-postsToShow);
@@ -26,6 +27,7 @@ var postsToShow = 5;
     
     // loop through the last X rows most recent first (ie, process the sheet bottom up)
     for (var i = sheetLastX.length - 1; i >= 0; --i) {
+      // sheet is an array of objects, row is an object
       var row = sheetLastX[i];
       // go generate the post html for this row
       var post = generatePost(row);
@@ -37,30 +39,46 @@ var postsToShow = 5;
   }
   
   function generatePost(row) { 
+    // row is an object
 
     var post = document.createElement('div');
     post.setAttribute('id', 'js-post');
 
-    var postDate = document.createElement('div');
-    postDate.textContent = row['date-of-announcement'];
-    post.appendChild(postDate);
+    var date = row['date-of-announcement'];
+    if (date != "") {
+      var postDate = document.createElement('div');
+      postDate.textContent = date;
+      post.appendChild(postDate);
+    }
+    
+    var title = row['title-of-announcement'];
+    if (title != "") {
+      var postTitle = document.createElement('div');
+      postTitle.textContent = title;
+      post.appendChild(postTitle);
+    }
 
-    var postTitle = document.createElement('div');
-    postTitle.textContent = row['title-of-announcement'];
-    post.appendChild(postTitle);
-
-    var postBody = document.createElement('div');
-    postBody.textContent = row['body-of-announcement'];
-    post.appendChild(postBody);
-
-    var postProduce = document.createElement('div');
-    postProduce.textContent = row['produce-list'];
-    post.appendChild(postProduce);
-
-    var postLink = document.createElement('a');
-    postLink.setAttribute('href', row['link-destination']);
-    postLink.textContent = 'the link';
-    post.appendChild(postLink);
+    var body = row['body-of-announcement'];
+    if (body != "") {
+      var postBody = document.createElement('div');
+      postBody.textContent = body;
+      post.appendChild(postBody);
+    }
+    
+    var produce = row['produce-list'];
+    if (produce != "") {
+      var postProduce = document.createElement('div');
+      postProduce.textContent = produce;
+      post.appendChild(postProduce);
+    }
+    
+    var link = row['link-destination'];
+    if (link != "") {
+      var postLink = document.createElement('a');
+      postLink.setAttribute('href', link);
+      postLink.textContent = 'the link';
+      post.appendChild(postLink);
+    }    
 
     return post;
   };
