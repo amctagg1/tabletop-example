@@ -42,11 +42,12 @@ var postsToShow = 5;
     // row is an object
 
     var post = document.createElement('div');
-    post.setAttribute('id', 'js-post');
+    post.setAttribute('class', 'post');
 
     var date = row['date-of-announcement'];
     if (date != "") {
       var postDate = document.createElement('div');
+      postDate.setAttribute('class', 'post-date');
       postDate.textContent = date;
       post.appendChild(postDate);
     }
@@ -54,6 +55,7 @@ var postsToShow = 5;
     var title = row['title-of-announcement'];
     if (title != "") {
       var postTitle = document.createElement('div');
+      postTitle.setAttribute('class', 'post-title');
       postTitle.textContent = title;
       post.appendChild(postTitle);
     }
@@ -61,6 +63,7 @@ var postsToShow = 5;
     var body = row['body-of-announcement'];
     if (body != "") {
       var postBody = document.createElement('div');
+      postBody.setAttribute('class', 'post-body');
       postBody.textContent = body;
       post.appendChild(postBody);
     }
@@ -68,6 +71,7 @@ var postsToShow = 5;
     var produce = row['produce-list'];
     if (produce != "") {
       var postProduce = document.createElement('div');
+      postProduce.setAttribute('class', 'post-produce');
       postProduce.textContent = produce;
       post.appendChild(postProduce);
     }
@@ -75,6 +79,7 @@ var postsToShow = 5;
     var link = row['link-destination'];
     if (link != "") {
       var postLink = document.createElement('a');
+      postLink.setAttribute('class', 'post-link');
       postLink.setAttribute('href', link);
       postLink.textContent = 'the link';
       post.appendChild(postLink);
