@@ -77,11 +77,12 @@ var postsToShow = 5;
     }
     
     var link = row['link-destination'];
+    var linkName = row['link-name'];
     if (link != "") {
       var postLink = document.createElement('a');
       postLink.setAttribute('class', 'post-link');
       postLink.setAttribute('href', link);
-      postLink.textContent = 'the link';
+      postLink.textContent = linkName;
       post.appendChild(postLink);
     }    
 
