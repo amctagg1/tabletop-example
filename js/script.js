@@ -13,6 +13,11 @@ function init() {
 // Only display the last X posts in the sheet
 var postsToShow = 5;
 
+// HTML for orders section that we'll use later on
+var postOrder = document.createElement('div');
+postOrder.setAttribute('class', 'post-order');
+postOrder.innerHTML = "<div><b>Get This Week's Veggies</b></div><div>Returning Customer: <a href='mailto:someone@example.com' target='_blank'>Email To Order</a></div><div>New Customer: <a href='https://forms.gle/7oEbLnghCec4aYw57' target='_blank'>Register Here</a></div>";
+
 // go through each row and generate posts to the page
 // sheet is an array of objects
   function postToPage(sheet) {
@@ -74,6 +79,14 @@ var postsToShow = 5;
       postProduce.setAttribute('class', 'post-produce');
       postProduce.textContent = produce;
       post.appendChild(postProduce);
+    }
+
+    var ordersFlag = row['order-active-YN'];
+    // if orders are active:
+    if (ordersFlag == "Y" || ordersFlag == "y") {
+      // get the orders div we built above in the script and clone it
+      var orderCopy = postOrder.cloneNode(true);
+      post.appendChild(orderCopy);
     }
     
     var link = row['link-destination'];
