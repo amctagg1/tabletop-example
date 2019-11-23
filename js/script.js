@@ -16,7 +16,7 @@ var postsToShow = 5;
 // HTML for orders section that we'll use later on
 var postOrder = document.createElement('div');
 postOrder.setAttribute('class', 'post-order');
-postOrder.innerHTML = "<div><b>Get This Week's Veggies</b></div><div>Returning Customer: <a href='mailto:someone@example.com' target='_blank'>Email To Order</a></div><div>New Customer: <a href='https://forms.gle/7oEbLnghCec4aYw57' target='_blank'>Register Here</a></div>";
+postOrder.innerHTML = "<div><b>Get This Week's Veggies</b></div><div>New to the CSA? <a href='https://forms.gle/7oEbLnghCec4aYw57' target='_blank'>Register Here First</a></div><div>Returning Customer: <a href='mailto:someone@example.com' target='_blank'>Email To Place Your Order</a></div>";
 
 // go through each row and generate posts to the page
 // sheet is an array of objects
